@@ -171,7 +171,7 @@ public class ClienteResource {
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of clientes in body.
      */
-    @GetMapping("/coches/searchingCliente")
+    @GetMapping("/clientes/searchingCliente")
     public ResponseEntity<List<ClienteDTO>> getAllClientesPorBusqueda(
         Pageable pageable,
         @RequestParam(required = false, defaultValue = "") String filtro
