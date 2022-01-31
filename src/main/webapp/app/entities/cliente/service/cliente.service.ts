@@ -41,6 +41,11 @@ export class ClienteService {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
+  filterForClient(filtro: string, pageable: any): Observable<HttpResponse<any>> {
+    const options = createRequestOption({ filtro, ...pageable });
+    return this.http.get<any>(`${this.resourceUrl}/searchingCliente`, { params: options, observe: 'response' });
+  }
+
   addClienteToCollectionIfMissing(clienteCollection: ICliente[], ...clientesToCheck: (ICliente | null | undefined)[]): ICliente[] {
     const clientes: ICliente[] = clientesToCheck.filter(isPresent);
     if (clientes.length > 0) {

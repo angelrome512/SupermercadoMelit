@@ -114,7 +114,7 @@
               [ngValue]="ivaOption.id === editForm.get('iva')!.value?.id ? editForm.get('iva')!.value : ivaOption"
               *ngFor="let ivaOption of ivasSharedCollection; trackBy: trackIvaById"
             >
-              {{ ivaOption.id }}
+              {{ ivaOption.tipo }}
             </option>
           </select>
         </div>
