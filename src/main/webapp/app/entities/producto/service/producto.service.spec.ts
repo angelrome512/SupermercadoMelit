@@ -27,7 +27,7 @@ describe('Producto Service', () => {
       cantidad: 0,
       precioBase: 0,
       precioTotal: 0,
-      tipoProducto: TipoProducto.VEGETALES,
+      tipoProducto: TipoProducto.FRUTAS,
     };
   });
 
