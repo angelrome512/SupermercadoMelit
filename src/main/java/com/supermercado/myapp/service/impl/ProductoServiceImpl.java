@@ -2,8 +2,6 @@ package com.supermercado.myapp.service.impl;
 
 import com.supermercado.myapp.domain.Iva;
 import com.supermercado.myapp.domain.Producto;
-import com.supermercado.myapp.domain.Venta;
-import com.supermercado.myapp.repository.IvaRepository;
 import com.supermercado.myapp.repository.ProductoRepository;
 import com.supermercado.myapp.repository.specification.ProductoSpecification;
 import com.supermercado.myapp.service.ProductoService;
@@ -63,6 +61,7 @@ public class ProductoServiceImpl implements ProductoService {
             }
         }
         producto = productoRepository.save(producto);
+
         return productoMapper.toDto(producto);
     }
 
