@@ -2,6 +2,7 @@ package com.supermercado.myapp.service.impl;
 
 import com.supermercado.myapp.domain.Empleado;
 import com.supermercado.myapp.repository.EmpleadoRepository;
+import com.supermercado.myapp.repository.specification.EmpleadoSpecification;
 import com.supermercado.myapp.service.EmpleadoService;
 import com.supermercado.myapp.service.dto.EmpleadoDTO;
 import com.supermercado.myapp.service.mapper.EmpleadoMapper;
@@ -72,5 +73,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     public void delete(Long id) {
         log.debug("Request to delete Empleado : {}", id);
         empleadoRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<EmpleadoDTO> findAllEmpleadoBySpecification(String filter, Pageable pageable) {
+        log.debug("Request to get all Empleados by Specification");
+        return empleadoRepository.findAll(EmpleadoSpecification.searchingParam(filter), pageable).map(empleadoMapper::toDto);
     }
 }

@@ -1,7 +1,11 @@
 package com.supermercado.myapp.service.impl;
 
+import com.supermercado.myapp.domain.Iva;
 import com.supermercado.myapp.domain.Producto;
+import com.supermercado.myapp.domain.Venta;
+import com.supermercado.myapp.repository.IvaRepository;
 import com.supermercado.myapp.repository.ProductoRepository;
+import com.supermercado.myapp.repository.specification.ProductoSpecification;
 import com.supermercado.myapp.service.ProductoService;
 import com.supermercado.myapp.service.dto.ProductoDTO;
 import com.supermercado.myapp.service.mapper.ProductoMapper;
@@ -35,6 +39,29 @@ public class ProductoServiceImpl implements ProductoService {
     public ProductoDTO save(ProductoDTO productoDTO) {
         log.debug("Request to save Producto : {}", productoDTO);
         Producto producto = productoMapper.toEntity(productoDTO);
+        if (null != producto.getPrecioTotal()) {
+            producto.getPrecioTotal();
+
+            if (null == producto.getPrecioTotal()) {
+                producto.setPrecioTotal(0.0);
+
+                if (null != producto.getIva()) {
+                    Iva iva = producto.getIva();
+
+                    if ("A" == iva.getTipo() && 1.04 == iva.getValor()) {
+                        producto.setPrecioTotal(producto.getPrecioBase() * iva.getValor());
+                    }
+
+                    if ("B" == iva.getTipo() && 1.10 == iva.getValor()) {
+                        producto.setPrecioTotal(producto.getPrecioBase() * iva.getValor());
+                    }
+
+                    if ("C" == iva.getTipo() && 1.21 == iva.getValor()) {
+                        producto.setPrecioTotal(producto.getPrecioBase() * iva.getValor());
+                    }
+                }
+            }
+        }
         producto = productoRepository.save(producto);
         return productoMapper.toDto(producto);
     }
@@ -72,5 +99,11 @@ public class ProductoServiceImpl implements ProductoService {
     public void delete(Long id) {
         log.debug("Request to delete Producto : {}", id);
         productoRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<ProductoDTO> findAllProductoBySpecification(String filter, Pageable pageable) {
+        log.debug("Request to get all Productos by specificaction");
+        return productoRepository.findAll(ProductoSpecification.searchingParam(filter), pageable).map(productoMapper::toDto);
     }
 }
