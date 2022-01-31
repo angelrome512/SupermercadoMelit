@@ -47,8 +47,8 @@ class ProductoResourceIT {
     private static final Double DEFAULT_PRECIO_TOTAL = 1D;
     private static final Double UPDATED_PRECIO_TOTAL = 2D;
 
-    private static final TipoProducto DEFAULT_TIPO_PRODUCTO = TipoProducto.VEGETALES;
-    private static final TipoProducto UPDATED_TIPO_PRODUCTO = TipoProducto.HIGIENE;
+    private static final TipoProducto DEFAULT_TIPO_PRODUCTO = TipoProducto.FRUTAS;
+    private static final TipoProducto UPDATED_TIPO_PRODUCTO = TipoProducto.BEBIDAS;
 
     private static final String ENTITY_API_URL = "/api/productos";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";

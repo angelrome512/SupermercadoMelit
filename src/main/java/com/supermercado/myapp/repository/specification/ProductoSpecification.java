@@ -26,7 +26,7 @@ public interface ProductoSpecification extends JpaSpecificationExecutor<Producto
                 Expression<String> cantidad = root.get("cantidad").as(String.class);
                 Expression<String> precioBase = root.get("precioBase").as(String.class);
                 Expression<String> precioTotal = root.get("precioTotal").as(String.class);
-                Expression<String> tipoProducto = root.get("tipoProducto").as(String.class);
+                //Expression<String> tipoProducto = root.get("tipoProducto").as(String.class);
 
                 String[] searchParam = filter.split(" ");
 
@@ -37,7 +37,7 @@ public interface ProductoSpecification extends JpaSpecificationExecutor<Producto
                     predicates.add(builder.like(cantidad, "%" + searchParam[i] + "%"));
                     predicates.add(builder.like(precioBase, "%" + searchParam[i] + "%"));
                     predicates.add(builder.like(precioTotal, "%" + searchParam[i] + "%"));
-                    predicates.add(builder.like(tipoProducto, "%" + searchParam[i] + "%"));
+                    //predicates.add(builder.like(tipoProducto, "%" + searchParam[i] + "%"));
 
                     ors.add(builder.or(predicates.toArray(new Predicate[] {})));
                 }

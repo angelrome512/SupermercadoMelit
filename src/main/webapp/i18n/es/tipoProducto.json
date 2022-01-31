@@ -2,8 +2,20 @@
   "supermercadoApp": {
     "TipoProducto": {
       "null": "",
-      "VEGETALES": "VEGETALES",
-      "HIGIENE": "HIGIENE"
+      "FRUTAS": "FRUTAS",
+      "VERDURAS": "VERDURAS",
+      "CHARCUTERÍA": "CHARCUTERIA",
+      "PESCADO": "PESCADO",
+      "PLATOS_PREPARADOS": "PLATOS_PREPARADOS",
+      "LÁCTEOS": "LÁCTEOS",
+      "PANADERÍA": "PANADERÍA",
+      "BOLLERÍA": "BOLLERÍA",
+      "LEGUMBRES": "LEGUMBRES",
+      "CONSERVAS": "CONSERVAS",
+      "CONGELADOS": "CONGELADOS",
+      "BEBIDAS": "BEBIDAS",
+      "HIGIENE_HOGAR": "HIGIENE_HOGAR",
+      "HIGIENE_PERSONAL": "HIGIENE_PERSONAL"
     }
   }
 }
