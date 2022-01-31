@@ -2,6 +2,7 @@ package com.supermercado.myapp.service.impl;
 
 import com.supermercado.myapp.domain.Producto;
 import com.supermercado.myapp.repository.ProductoRepository;
+import com.supermercado.myapp.repository.specification.ProductoSpecification;
 import com.supermercado.myapp.service.ProductoService;
 import com.supermercado.myapp.service.dto.ProductoDTO;
 import com.supermercado.myapp.service.mapper.ProductoMapper;
@@ -72,5 +73,11 @@ public class ProductoServiceImpl implements ProductoService {
     public void delete(Long id) {
         log.debug("Request to delete Producto : {}", id);
         productoRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<ProductoDTO> findAllProductoBySpecification(String filter, Pageable pageable) {
+        log.debug("Request to get all Productos by specificaction");
+        return productoRepository.findAll(ProductoSpecification.searchingParam(filter), pageable).map(productoMapper::toDto);
     }
 }
