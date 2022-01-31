@@ -16,6 +16,9 @@ public class EmpleadoDTO implements Serializable {
     private String nombre;
 
     @NotNull
+    private String documento;
+
+    @NotNull
     private String direccion;
 
     @NotNull
@@ -28,6 +31,14 @@ public class EmpleadoDTO implements Serializable {
     private Cargo cargo;
 
     private String codigoSU;
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
 
     public Long getId() {
         return id;

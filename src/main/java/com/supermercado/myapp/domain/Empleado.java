@@ -26,6 +26,18 @@ public class Empleado implements Serializable {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
+
+    @NotNull
+    @Column(name = "documento", nullable = false)
+    private String documento;
+
     @NotNull
     @Column(name = "direccion", nullable = false)
     private String direccion;

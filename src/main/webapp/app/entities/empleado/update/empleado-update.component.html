@@ -24,6 +24,20 @@
         </div>
 
         <div class="form-group">
+          <label class="form-control-label" jhiTranslate="supermercadoApp.empleado.documento" for="field_documento">Documento</label>
+          <input type="text" class="form-control" name="documento" id="field_documento" data-cy="documento" formControlName="documento" />
+          <div *ngIf="editForm.get('documento')!.invalid && (editForm.get('documento')!.dirty || editForm.get('documento')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('documento')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
           <label class="form-control-label" jhiTranslate="supermercadoApp.empleado.direccion" for="field_direccion">Direccion</label>
           <input type="text" class="form-control" name="direccion" id="field_direccion" data-cy="direccion" formControlName="direccion" />
           <div *ngIf="editForm.get('direccion')!.invalid && (editForm.get('direccion')!.dirty || editForm.get('direccion')!.touched)">

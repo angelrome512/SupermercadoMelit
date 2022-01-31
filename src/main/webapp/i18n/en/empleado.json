@@ -19,6 +19,7 @@
       },
       "id": "ID",
       "nombre": "Nombre",
+      "empleado": "Empleado",
       "direccion": "Direccion",
       "email": "Email",
       "telefono": "Telefono",

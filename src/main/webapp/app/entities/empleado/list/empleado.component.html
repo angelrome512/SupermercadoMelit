@@ -36,6 +36,9 @@
           <th scope="col" jhiSortBy="nombre">
             <span jhiTranslate="supermercadoApp.empleado.nombre">Nombre</span> <fa-icon icon="sort"></fa-icon>
           </th>
+          <th scope="col" jhiSortBy="nombre">
+            <span jhiTranslate="supermercadoApp.empleado.documento">Documento</span> <fa-icon icon="sort"></fa-icon>
+          </th>
           <th scope="col" jhiSortBy="direccion">
             <span jhiTranslate="supermercadoApp.empleado.direccion">Direccion</span> <fa-icon icon="sort"></fa-icon>
           </th>
@@ -60,6 +63,7 @@
             <a [routerLink]="['/empleado', empleado.id, 'view']">{{ empleado.id }}</a>
           </td>
           <td>{{ empleado.nombre }}</td>
+          <td>{{ empleado.documento }}</td>
           <td>{{ empleado.direccion }}</td>
           <td>{{ empleado.email }}</td>
           <td>{{ empleado.telefono }}</td>
