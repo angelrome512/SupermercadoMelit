@@ -1,6 +1,6 @@
 package com.supermercado.myapp.repository.specification;
 
-import com.supermercado.myapp.domain.Producto;
+import com.supermercado.myapp.domain.Empleado;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -11,33 +11,33 @@ import javax.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface ProductoSpecification extends JpaSpecificationExecutor<Producto> {
-    public static Specification<Producto> searchingParam(String filter) {
-        return new Specification<Producto>() {
+public interface EmpleadoSpecification extends JpaSpecificationExecutor<Empleado> {
+    public static Specification<Empleado> searchingParam(String filter) {
+        return new Specification<Empleado>() {
             private static final long serialVersionUID = 1L;
 
-            public Predicate toPredicate(Root<Producto> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+            public Predicate toPredicate(Root<Empleado> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
                 query.distinct(true);
 
                 List<Predicate> ors = new ArrayList<Predicate>();
 
-                Expression<String> codigo = root.get("codigo").as(String.class);
                 Expression<String> nombre = root.get("nombre").as(String.class);
-                Expression<String> cantidad = root.get("cantidad").as(String.class);
-                Expression<String> precioBase = root.get("precioBase").as(String.class);
-                Expression<String> precioTotal = root.get("precioTotal").as(String.class);
-                Expression<String> tipoProducto = root.get("tipoProducto").as(String.class);
+                Expression<String> direccion = root.get("direccion").as(String.class);
+                Expression<String> email = root.get("email").as(String.class);
+                Expression<String> telefono = root.get("telefono").as(String.class);
+                Expression<String> cargo = root.get("cargo").as(String.class);
+                Expression<String> codigoSU = root.get("codigoSU").as(String.class);
 
                 String[] searchParam = filter.split(" ");
 
                 for (int i = 0; i < searchParam.length; i++) {
                     List<Predicate> predicates = new ArrayList<Predicate>();
-                    predicates.add(builder.like(codigo, "%" + searchParam[i] + "%"));
                     predicates.add(builder.like(nombre, "%" + searchParam[i] + "%"));
-                    predicates.add(builder.like(cantidad, "%" + searchParam[i] + "%"));
-                    predicates.add(builder.like(precioBase, "%" + searchParam[i] + "%"));
-                    predicates.add(builder.like(precioTotal, "%" + searchParam[i] + "%"));
-                    predicates.add(builder.like(tipoProducto, "%" + searchParam[i] + "%"));
+                    predicates.add(builder.like(direccion, "%" + searchParam[i] + "%"));
+                    predicates.add(builder.like(email, "%" + searchParam[i] + "%"));
+                    predicates.add(builder.like(telefono, "%" + searchParam[i] + "%"));
+                    predicates.add(builder.like(cargo, "%" + searchParam[i] + "%"));
+                    predicates.add(builder.like(codigoSU, "%" + searchParam[i] + "%"));
 
                     ors.add(builder.or(predicates.toArray(new Predicate[] {})));
                 }

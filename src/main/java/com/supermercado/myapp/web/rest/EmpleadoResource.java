@@ -153,6 +153,23 @@ public class EmpleadoResource {
     }
 
     /**
+     * {@code GET  /empleados/searchingParam} : get all the empleados by specification
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of empleados in body.
+     */
+    @GetMapping("/empleados/searchingParam")
+    public ResponseEntity<List<EmpleadoDTO>> getAllEmpleadosBySpecification(
+        Pageable pageable,
+        @RequestParam(required = false, defaultValue = "") String filter
+    ) throws InterruptedException, URISyntaxException {
+        log.debug("REST request to get a page of Empleados");
+        Page<EmpleadoDTO> page = empleadoService.findAllEmpleadoBySpecification(filter, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
      * {@code GET  /empleados/:id} : get the "id" empleado.
      *
      * @param id the id of the empleadoDTO to retrieve.
