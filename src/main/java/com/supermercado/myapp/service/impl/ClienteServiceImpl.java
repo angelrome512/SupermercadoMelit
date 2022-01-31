@@ -2,6 +2,7 @@ package com.supermercado.myapp.service.impl;
 
 import com.supermercado.myapp.domain.Cliente;
 import com.supermercado.myapp.repository.ClienteRepository;
+import com.supermercado.myapp.repository.specification.ClienteSpecification;
 import com.supermercado.myapp.service.ClienteService;
 import com.supermercado.myapp.service.dto.ClienteDTO;
 import com.supermercado.myapp.service.mapper.ClienteMapper;
@@ -66,6 +67,13 @@ public class ClienteServiceImpl implements ClienteService {
     public Optional<ClienteDTO> findOne(Long id) {
         log.debug("Request to get Cliente : {}", id);
         return clienteRepository.findById(id).map(clienteMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ClienteDTO> findAllByParam(Pageable pageable, String filtro) {
+        log.debug("Request to get Cliente : {}");
+        return clienteRepository.findAll(ClienteSpecification.searchingCliente(filtro), pageable).map(clienteMapper::toDto);
     }
 
     @Override

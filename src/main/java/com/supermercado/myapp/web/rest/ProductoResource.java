@@ -153,6 +153,23 @@ public class ProductoResource {
     }
 
     /**
+     * {@code GET  /productos/searchingParam} : get all the productos by specification
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of productos in body.
+     */
+    @GetMapping("/productos/searchingParam")
+    public ResponseEntity<List<ProductoDTO>> getAllProductos(
+        Pageable pageable,
+        @RequestParam(required = false, defaultValue = "") String filter
+    ) throws InterruptedException, URISyntaxException {
+        log.debug("REST request to get a page of Productos by specification");
+        Page<ProductoDTO> page = productoService.findAllProductoBySpecification(filter, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
      * {@code GET  /productos/:id} : get the "id" producto.
      *
      * @param id the id of the productoDTO to retrieve.

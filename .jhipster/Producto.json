@@ -28,7 +28,7 @@
     {
       "fieldName": "tipoProducto",
       "fieldType": "TipoProducto",
-      "fieldValues": "VEGETALES,HIGIENE"
+      "fieldValues": "FRUTAS, VERDURAS, CHARCUTERIA, PESCADO, PLATOS_PREPARADOS, LÁCTEOS, PANADERÍA, BOLLERÍA, LEGUMBRES, CONSERVAS, CONGELADOS, BEBIDAS, HIGIENE_HOGAR, HIGIENE_PERSONAL"
     }
   ],
   "relationships": [

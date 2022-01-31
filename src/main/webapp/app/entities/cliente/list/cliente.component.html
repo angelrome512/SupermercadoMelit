@@ -3,6 +3,14 @@
     <span jhiTranslate="supermercadoApp.cliente.home.title">Clientes</span>
 
     <div class="d-flex justify-content-end">
+      <input
+        type="text"
+        [(ngModel)]="searchString"
+        (ngModelChange)="searchingClient()"
+        placeholder="Buscar..."
+        class="form-control-sm mr-2 mt-2"
+      />
+
       <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="supermercadoApp.cliente.home.refreshListLabel">Refresh List</span>

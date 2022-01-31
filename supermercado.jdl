@@ -15,8 +15,20 @@ enum TipoPago {
 }
 
 enum TipoProducto {
-	VEGETALES
-    HIGIENE
+	FRUTAS,
+    VERDURAS,
+    CHARCUTERÍA,
+    PESCADO,
+    PLATOS_PREPARADOS,
+    LÁCTEOS,
+    PANADERÍA,
+    BOLLERÍA,
+    LEGUMBRES,
+    CONSERVAS,
+    CONGELADOS,
+    BEBIDAS,
+    HIGIENE_HOGAR,
+    HIGIENE_PERSONAL,
 }
 
 entity Iva {
@@ -59,12 +71,12 @@ entity Venta {
 }
 
 entity Caja{
-	fecha LocalDate 
+	fecha LocalDate
     saldoInicial Double required
-    totalEfectivo Double 
-    totalTarjeta Double 
-    saldoTotal Double 
-    
+    totalEfectivo Double
+    totalTarjeta Double
+    saldoTotal Double
+
 }
 
 entity Empresa {
@@ -75,12 +87,12 @@ entity Empresa {
 }
 
 relationship ManyToOne {
-	Venta{cliente} to Cliente   
+	Venta{cliente} to Cliente
     Venta{empleado} to Empleado
     Venta{producto} to Producto
     Caja{venta} to Venta
     Caja{empleado} to Empleado
-    Producto{iva} to Iva    
+    Producto{iva} to Iva
 }
 
 paginate all with pagination

@@ -41,6 +41,8 @@ public interface ClienteService {
      */
     Optional<ClienteDTO> findOne(Long id);
 
+    Page<ClienteDTO> findAllByParam(Pageable pageable, String filtro);
+
     /**
      * Delete the "id" cliente.
      *

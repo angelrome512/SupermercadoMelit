@@ -27,7 +27,7 @@ export class ProductoUpdateComponent implements OnInit {
     nombre: [null, [Validators.required]],
     cantidad: [null, [Validators.required]],
     precioBase: [null, [Validators.required]],
-    precioTotal: [],
+    precioTotal: [{ value: 0.0, disabled: true }],
     tipoProducto: [],
     iva: [],
   });

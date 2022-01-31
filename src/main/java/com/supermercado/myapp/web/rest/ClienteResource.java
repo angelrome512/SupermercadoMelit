@@ -166,6 +166,25 @@ public class ClienteResource {
     }
 
     /**
+     * {@code GET  /cliente} : get all the clientes sorted by param.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of clientes in body.
+     */
+    @GetMapping("/coches/searchingCliente")
+    public ResponseEntity<List<ClienteDTO>> getAllClientesPorBusqueda(
+        Pageable pageable,
+        @RequestParam(required = false, defaultValue = "") String filtro
+    ) throws InterruptedException, URISyntaxException {
+        log.debug("REST request to get a page of Coches");
+        filtro = !filtro.equals("undefined") ? filtro : "%";
+        Page<ClienteDTO> page = clienteService.findAllByParam(pageable, filtro);
+        filtro = !filtro.equals("undefined") ? filtro : "%";
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
      * {@code DELETE  /clientes/:id} : delete the "id" cliente.
      *
      * @param id the id of the clienteDTO to delete.
