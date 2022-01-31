@@ -1,0 +1,9 @@
+{
+  "supermercadoApp": {
+    "TipoProducto": {
+      "null": "",
+      "VEGETALES": "VEGETALES",
+      "HIGIENE": "HIGIENE"
+    }
+  }
+}
