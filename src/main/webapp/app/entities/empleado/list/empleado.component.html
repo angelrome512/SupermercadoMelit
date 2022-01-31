@@ -32,11 +32,10 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col" jhiSortBy="nombre">
             <span jhiTranslate="supermercadoApp.empleado.nombre">Nombre</span> <fa-icon icon="sort"></fa-icon>
           </th>
-          <th scope="col" jhiSortBy="nombre">
+          <th scope="col" jhiSortBy="activo">
             <span jhiTranslate="supermercadoApp.empleado.documento">Documento</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col" jhiSortBy="direccion">
@@ -54,14 +53,14 @@
           <th scope="col" jhiSortBy="codigoSU">
             <span jhiTranslate="supermercadoApp.empleado.codigoSU">Codigo SU</span> <fa-icon icon="sort"></fa-icon>
           </th>
+          <th scope="col" jhiSortBy="activo">
+            <span jhiTranslate="supermercadoApp.empleado.activo">activo</span> <fa-icon icon="sort"></fa-icon>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let empleado of empleados; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/empleado', empleado.id, 'view']">{{ empleado.id }}</a>
-          </td>
           <td>{{ empleado.nombre }}</td>
           <td>{{ empleado.documento }}</td>
           <td>{{ empleado.direccion }}</td>
@@ -69,18 +68,14 @@
           <td>{{ empleado.telefono }}</td>
           <td jhiTranslate="{{ 'supermercadoApp.Cargo.' + empleado.cargo }}">{{ empleado.cargo }}</td>
           <td>{{ empleado.codigoSU }}</td>
+          <td>
+            <ng-container [ngSwitch]="empleado.activo">
+              <fa-icon *ngSwitchCase="true" icon="check"></fa-icon>
+              <fa-icon *ngSwitchCase="false" icon="times"></fa-icon>
+            </ng-container>
+          </td>
           <td class="text-right">
             <div class="btn-group">
-              <button
-                type="submit"
-                [routerLink]="['/empleado', empleado.id, 'view']"
-                class="btn btn-info btn-sm"
-                data-cy="entityDetailsButton"
-              >
-                <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-              </button>
-
               <button
                 type="submit"
                 [routerLink]="['/empleado', empleado.id, 'edit']"

@@ -24,7 +24,8 @@
       "email": "Email",
       "telefono": "Telefono",
       "cargo": "Cargo",
-      "codigoSU": "Codigo SU"
+      "codigoSU": "Codigo SU",
+      "activo": "Activo"
     }
   }
 }

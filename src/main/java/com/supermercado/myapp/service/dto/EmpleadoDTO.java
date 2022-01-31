@@ -32,8 +32,18 @@ public class EmpleadoDTO implements Serializable {
 
     private String codigoSU;
 
+    private Boolean activo;
+
     public String getDocumento() {
         return documento;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     public void setDocumento(String documento) {

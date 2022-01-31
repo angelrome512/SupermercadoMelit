@@ -9,6 +9,7 @@ export interface IEmpleado {
   telefono?: string;
   cargo?: Cargo;
   codigoSU?: string | null;
+  activo?: boolean | null;
 }
 
 export class Empleado implements IEmpleado {
@@ -20,7 +21,8 @@ export class Empleado implements IEmpleado {
     public email?: string,
     public telefono?: string,
     public cargo?: Cargo,
-    public codigoSU?: string | null
+    public codigoSU?: string | null,
+    public activo?: boolean | null
   ) {}
 }
 

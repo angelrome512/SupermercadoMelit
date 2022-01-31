@@ -26,14 +26,6 @@ public class Empleado implements Serializable {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
-
     @NotNull
     @Column(name = "documento", nullable = false)
     private String documento;
@@ -58,10 +50,29 @@ public class Empleado implements Serializable {
     @Column(name = "codigo_su")
     private String codigoSU;
 
+    @Column(name = "activo")
+    private Boolean activo;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public Long getId() {
         return this.id;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
     public Empleado id(Long id) {
@@ -176,6 +187,7 @@ public class Empleado implements Serializable {
         return "Empleado{" +
             "id=" + getId() +
             ", nombre='" + getNombre() + "'" +
+            ", documento='" + getDocumento() + "'" +
             ", direccion='" + getDireccion() + "'" +
             ", email='" + getEmail() + "'" +
             ", telefono='" + getTelefono() + "'" +

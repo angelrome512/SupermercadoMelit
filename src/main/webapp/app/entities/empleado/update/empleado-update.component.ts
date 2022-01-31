@@ -26,6 +26,7 @@ export class EmpleadoUpdateComponent implements OnInit {
     telefono: [null, [Validators.required]],
     cargo: [null, [Validators.required]],
     codigoSU: [],
+    activo: [],
   });
 
   constructor(protected empleadoService: EmpleadoService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
@@ -79,6 +80,7 @@ export class EmpleadoUpdateComponent implements OnInit {
       telefono: empleado.telefono,
       cargo: empleado.cargo,
       codigoSU: empleado.codigoSU,
+      activo: empleado.activo,
     });
   }
 
@@ -93,6 +95,7 @@ export class EmpleadoUpdateComponent implements OnInit {
       telefono: this.editForm.get(['telefono'])!.value,
       cargo: this.editForm.get(['cargo'])!.value,
       codigoSU: this.editForm.get(['codigoSU'])!.value,
+      activo: this.editForm.get(['activo'])!.value,
     };
   }
 }
