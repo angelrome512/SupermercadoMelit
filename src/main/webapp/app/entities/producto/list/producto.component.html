@@ -78,7 +78,7 @@
           <td jhiTranslate="{{ 'supermercadoApp.TipoProducto.' + producto.tipoProducto }}">{{ producto.tipoProducto }}</td>
           <td>
             <div *ngIf="producto.iva">
-              <a [routerLink]="['/iva', producto.iva?.id, 'view']">{{ producto.iva?.id }}</a>
+              <a [routerLink]="['/iva', producto.iva?.id, 'view']">{{ producto.iva?.tipo }}</a>
             </div>
           </td>
           <td class="text-right">
